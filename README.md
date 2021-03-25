@@ -5,3 +5,4 @@ And it should be triggered by any change
 
 Test
 Test2
+Test3
