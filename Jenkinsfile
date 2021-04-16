@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment { 
         VAR = 'clang'
+        VAR2 = 'micsu di'
     }
     stages {
         stage('Example') {
