@@ -7,8 +7,7 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                echo "$VAR1"
-                echo "$VAR2"
+                echo 'printenv'
             }
         }
     }
