@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker 'maven:3-alpine' } 
+    agent { docker 'busybox' } 
     stages {
         stage('Example') {
             steps {
