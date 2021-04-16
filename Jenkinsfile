@@ -1,13 +1,14 @@
 pipeline {
     agent any
     environment { 
-        VAR = 'clang'
+        VAR1 = 'clang'
         VAR2 = 'micsu di'
     }
     stages {
         stage('Example') {
             steps {
-                echo "$VAR"
+                echo "$VAR1"
+                echo "$VAR2"
             }
         }
     }
