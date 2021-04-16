@@ -8,7 +8,7 @@ pipeline {
                     echo "Multiline shell steps works too"
                     ls -lah
                 '''
-                sh 'uname -a && ls -la && env'
+                sh 'uname -a && ls -la && env echo $dw'
             }
         }
     }
