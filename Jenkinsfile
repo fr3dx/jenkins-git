@@ -1,13 +1,17 @@
-// Declarative //
 pipeline {
     agent any
-    triggers {
-        cron('H */4 * * 1-5')
-    }
     stages {
-        stage('Example') {
+        stage('Example Build') {
             steps {
                 echo 'Hello World'
+            }
+        }
+        stage('Example Deploy') {
+            when {
+                branch 'production'
+            }
+            steps {
+                echo 'Deploying'
             }
         }
     }
