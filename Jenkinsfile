@@ -12,6 +12,7 @@ pipeline {
         } else {
             echo 'I execute elsewhere'
         }
-        
+    }
+    
     }
 }
