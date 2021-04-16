@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                echo 'Hello World'
+                echofhgfg 'Hello World'
             }
         }
     }
     post { 
-        always { 
+        failure { 
             echo 'I will always say Hello again!'
         }
     }
