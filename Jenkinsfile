@@ -1,6 +1,6 @@
 agent {
     docker {
-        image 'maven:3-alpine'
+        image 'alpine:latest'
         label 'my-defined-label'
         args  '-v /tmp:/tmp'
     }
