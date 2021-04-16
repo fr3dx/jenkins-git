@@ -1,9 +1,12 @@
 pipeline {
     agent any
+    environment { 
+        VAR = 'clang'
+    }
     stages {
         stage('Example') {
             steps {
-                echofhgfg 'Hello World'
+                echo '$VAR'
             }
         }
     }
