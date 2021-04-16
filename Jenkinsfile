@@ -11,10 +11,18 @@ pipeline {
                 sh 'uname -a && ls -la && env && echo $dw'
             }
         }
-    agent docker {
-        image 'maven:3-alpine'
-        label 'my-defined-label'
-        args  '-v /tmp:/tmp'
+        
+        stage('Build') {
+
+            steps {
+                image 'maven:3-alpine'
+                label 'my-defined-label'
+                args  '-v /tmp:/tmp'
+
+
+            }
+
         }
+        
     }
 }
