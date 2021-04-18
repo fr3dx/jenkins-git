@@ -25,7 +25,7 @@ pipeline {
             steps {
 		withDockerRegistry(credentialsId: 'dockerhub', url: '') {
 		//sh 'docker login --username ferencmolnar --password-stdin < ~/my_passwd'
-		sh 'docker push ferencmolnar/sampleweb:latest'
+		sh 'docker push username/sampleweb:latest'
 		}
          }
     }
