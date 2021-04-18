@@ -23,9 +23,9 @@ pipeline {
      
   stage('Publish image to Docker Hub') {
             steps {
-		withDockerRegistry(credentialsId: 'dockerhub', url: 'https://hub.docker.com/repository/docker/ferencmolnar/nginx') {
+		withDockerRegistry(credentialsId: 'dockerhub', url: 'https://hub.docker.com/repository/docker/ferencmolnar') {
 		sh 'docker login --username ferencmolnar --password-stdin < ~/my_passwd'
-		
+		sh 'docker push ferencmolnar/sampleweb:latest'
 		}
          }
     }
