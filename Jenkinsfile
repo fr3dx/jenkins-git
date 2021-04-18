@@ -23,13 +23,16 @@ pipeline {
      
   //stage('Publish image to Docker Hub') {
           
-            //steps {
+            steps {
         //withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
           //sh  'docker push ferencmolnar/sampleweb:latest'
         //  sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
         //}
-                  
-         // }
+                  // This step should not normally be used in your script. Consult the inline help for details.
+		withDockerRegistry(credentialsId: 'dockerhub', url: 'https://hub.docker.com/repository/docker/ferencmolnar/nginx') {
+    // some block
+}
+         }
     //   }
      
       stage('Run Docker container on Jenkins Agent') {
