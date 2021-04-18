@@ -1,18 +1,48 @@
-// This shows a simple example of how to archive the build output artifacts.
-node {
-    stage "Create build output"
-    
-    // Make the output directory.
-    sh "mkdir -p output"
+pipeline {
+    agent any
+	
+	  tools
+    {
+       maven "Maven"
+    }
+ stages {
+      stage('checkout') {
+           steps {
+             
+                git branch: 'main', url: 'https://github.com/fr3dx/jenkins-git'
+             
+          }
+        }
+        
 
-    // Write an useful file, which is needed to be archived.
-    writeFile file: "output/usefulfile.txt", text: "This file is useful, need to archive it."
-
-    // Write an useless file, which is not needed to be archived.
-    writeFile file: "output/uselessfile.md", text: "This file is useless, no need to archive it."
-
-    stage "Archive build output"
-    
-    // Archive the build output artifacts.
-    archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md'
-}
+  stage('Docker Pull, Build and Tag') {
+           steps {
+                sh 'docker pull nginx:latest .' 
+                //sh 'docker build -t samplewebapp:latest .' 
+                sh 'docker tag sampleweb ferencmolnar/sampleweb:latest'
+                //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
+               
+          }
+        }
+     
+  stage('Publish image to Docker Hub') {
+          
+            steps {
+        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+          sh  'docker push ferencmolnar/sampleweb:latest'
+        //  sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
+        }
+                  
+          }
+        }
+     
+      stage('Run Docker container on Jenkins Agent') {
+             
+            steps 
+			{
+                sh "docker run -d -p 80:80 ferencmolnar/sampleweb"
+ 
+            }
+        }
+    }
+	}
