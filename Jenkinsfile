@@ -13,7 +13,7 @@ pipeline {
 
   stage('Docker Pull, Build and Tag') {
            steps {
-                sh 'docker pull nginx:latest .' 
+                sh 'docker pull nginx:1.19.10-alpine' 
                 //sh 'docker build -t samplewebapp:latest .' 
                 sh 'docker tag sampleweb ferencmolnar/sampleweb:latest'
                 //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
