@@ -24,7 +24,7 @@ pipeline {
   stage('Publish image to Docker Hub') {
             steps {
 		withDockerRegistry(credentialsId: 'dockerhub', url: '') {
-		//sh 'docker login --username ferencmolnar --password-stdin < ~/my_passwd'
+		//sh 'docker login --username username --password-stdin < ~/my_passwd'
 		sh 'docker push username/sampleweb:latest'
 		}
          }
